@@ -9,6 +9,7 @@ import PlaceOrder from './components/PlaceOrder/PlaceOrder';
 import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import AuthProvider from './context/AuthProvider';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 
 function App() {
   return (
@@ -21,7 +22,11 @@ function App() {
           <Route exact path="/shop" element={<Shop/>}/>
           <Route exact path="/review" element={<OrderReview/>}/>
           <Route exact path="/inventory" element={<Inventory/>}/>
-          <Route exact path = '/order' element={<PlaceOrder></PlaceOrder>}/>
+          <Route exact path = '/order' element={
+          <PrivateRoute>
+            <PlaceOrder></PlaceOrder>
+          </PrivateRoute>
+          }/>
           <Route path = '/login' element={<Login></Login>}/>
           <Route path='/register' element={<Register></Register>}/>
           <Route exact path="*" element ={<NotFound/>}>
